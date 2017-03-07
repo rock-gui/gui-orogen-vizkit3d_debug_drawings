@@ -6,7 +6,8 @@ namespace wrappers
 
     struct CommandWrapper
     {
-    }
+         int dummy;
+    };
 
 }
 
