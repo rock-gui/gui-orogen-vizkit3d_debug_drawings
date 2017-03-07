@@ -1,0 +1,9 @@
+name "vizkit3d_debug_drawings"
+
+using_library 'vizkit3d_debug_drawings'
+
+#import opaque wrapper
+import_types_from "wrappers/CommandWrapper.hpp"
+
+typekit.opaque_type '/vizkit3dDebugDrawings/Command', 'wrappers/CommandWrapper'
+
