@@ -6,5 +6,6 @@ using_library 'vizkit3d_debug_drawings'
 import_types_from "wrappers/CommandWrapper.hpp"
 import_types_from "vizkit3d_debug_drawings/commands/Command.h"
 
-typekit.opaque_type '/vizkit3dDebugDrawings/Command', 'wrappers/CommandWrapper'
+typekit.opaque_type '/boost/shared_ptr</vizkit3dDebugDrawings/Command>', 'wrappers/CommandWrapper',
+        :includes => ['/usr/include/boost/shared_ptr.hpp', 'vizkit3d_debug_drawings/commands/Command.h']
 
