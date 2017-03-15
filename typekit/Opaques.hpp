@@ -9,9 +9,9 @@ namespace orogen_typekits
 {
     
     /** Converts \c real_type into \c intermediate */
-    void toIntermediate(::wrappers::CommandWrapper& intermediate, const boost::shared_ptr<vizkit3dDebugDrawings::Command>& real_type);
+    void toIntermediate(::wrappers::CommandWrapper& intermediate, const boost::shared_ptr<vizkit3dDebugDrawings::CommandBuffer>& real_type);
     /** Converts \c intermediate into \c real_type */
-    void fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::Command>& real_type, ::wrappers::CommandWrapper const& intermediate);
+    void fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::CommandBuffer>& real_type, ::wrappers::CommandWrapper const& intermediate);
         
     
 }

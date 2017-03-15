@@ -2,17 +2,18 @@
 
 #include <vizkit3d_debug_drawings/typekit/OpaqueTypes.hpp>
 #include <vizkit3d_debug_drawings/typekit/Opaques.hpp>
-#include <vizkit3d_debug_drawings/commands/Command.h>
-#include <vizkit3d_debug_drawings/commands/BoostSerializationExports.h>
+#include <vizkit3d_debug_drawings/commands/CommandBuffer.h>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/iostreams/device/array.hpp>
 #include <boost/iostreams/device/back_inserter.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <thread>
+
 
 using namespace boost;
 
-void orogen_typekits::fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::Command>& real_type,
+void orogen_typekits::fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::CommandBuffer>& real_type,
                                        const wrappers::CommandWrapper& intermediate)
 {
     //rock-display calls from intermediate with empty intermediate. No idea why...
@@ -29,7 +30,7 @@ void orogen_typekits::fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::
     
     try 
     {
-        vizkit3dDebugDrawings::Command* cmd;
+        vizkit3dDebugDrawings::CommandBuffer* cmd;
         ia >> cmd;
         real_type.reset(cmd);
     }
@@ -43,7 +44,7 @@ void orogen_typekits::fromIntermediate(boost::shared_ptr<vizkit3dDebugDrawings::
 }
  
 void orogen_typekits::toIntermediate(wrappers::CommandWrapper& intermediate,
-                                     const boost::shared_ptr<vizkit3dDebugDrawings::Command>& real_type)
+                                     const boost::shared_ptr<vizkit3dDebugDrawings::CommandBuffer>& real_type)
 {
     //rock-display calls toIntermediate with invalid real_type. No idea why.
     //FIXME investigate why this happens
@@ -58,7 +59,7 @@ void orogen_typekits::toIntermediate(wrappers::CommandWrapper& intermediate,
     iostreams::back_insert_device<std::vector<char>> sink{buffer};
     iostreams::stream<iostreams::back_insert_device<std::vector<char>>> os{sink};
     archive::binary_oarchive oa(os);
-    vizkit3dDebugDrawings::Command* cmd = real_type.get();
+    vizkit3dDebugDrawings::CommandBuffer* cmd = real_type.get();
     try 
     {
         oa << cmd;
@@ -66,7 +67,7 @@ void orogen_typekits::toIntermediate(wrappers::CommandWrapper& intermediate,
     }
     catch (const std::exception &exc)
     {
-        std::cerr << "Error while serializing debug drawing command: " << exc.what();
+        std::cout << "Error while serializing debug drawing command: " << exc.what() << std::endl;
         return;
     }
     
