@@ -2,7 +2,7 @@
 
 #include <vizkit3d_debug_drawings/typekit/OpaqueTypes.hpp>
 #include <vizkit3d_debug_drawings/typekit/Opaques.hpp>
-#include <vizkit3d_debug_drawings/commands/CommandBuffer.h>
+#include <vizkit3d_debug_drawings/commands/CommandBuffer.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/iostreams/device/array.hpp>
