@@ -9,6 +9,7 @@
 #include <boost/iostreams/device/back_inserter.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <thread>
+#include <iostream>
 
 
 using namespace boost;
