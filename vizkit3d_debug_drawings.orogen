@@ -1,6 +1,6 @@
 name "vizkit3d_debug_drawings"
 
-using_library 'vizkit3d_debug_drawings'
+using_library 'vizkit3d_debug_drawings-commands'
 
 #import opaque wrapper
 import_types_from "wrappers/CommandWrapper.hpp"
